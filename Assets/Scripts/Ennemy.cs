@@ -21,17 +21,13 @@ public class Ennemy : MonoBehaviour
 	public float bloodAmount = 1;
 	public float hitDamages = 1;
 	public float minimalVelocityToDie = 10;
-	public float minX;
-	public float maxX;
 
 	private bool isDead = false;
 	private Vector3 deadVelocity;
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
 	private Rigidbody _myRigidbody;
-	private Collider _myCollider;
-	private static float SPEED_MODIFIER = -0.1f;
-	private static float SPAWN_Y = 10f; //TODO adjust for right time with music
+	private static float SPEED_MODIFIER = -0.1f;//TODO adjust for right time with music
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -135,7 +131,7 @@ public class Ennemy : MonoBehaviour
 	void Start()
 	{
 		_myRigidbody = GetComponent<Rigidbody>();
-		_myCollider = GetComponent<Collider>();
+		transform.eulerAngles = Vector3.zero;
 	}
 
 	// Update is called once per frame
@@ -150,14 +146,5 @@ public class Ennemy : MonoBehaviour
 			transform.Translate(deadVelocity * Time.fixedDeltaTime);
 			transform.Rotate(deadRotationVelocity * Time.fixedDeltaTime);
 		}
-	}
-
-	// Instantiate an ennemy (with random X coord between minX and maxX) given a GameObject Prefab of ennemy
-	public static Ennemy InstantiateEnnemy(GameObject o)
-	{
-		Ennemy current = o.GetComponent<Ennemy>();
-		GameObject instance = Instantiate(o, new Vector3(Random.Range(current.minX, current.maxX), SPAWN_Y, 0),
-			new Quaternion(0, 0, 0, 0));
-		return instance.GetComponent<Ennemy>();
 	}
 }

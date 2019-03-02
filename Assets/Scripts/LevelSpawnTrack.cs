@@ -8,6 +8,10 @@ public class LevelSpawnTrack : MonoBehaviour
 	public GameObject leftLaneEnnemy;
 	public GameObject rightLaneEnnemy;
 	public String levelToLoad = "level1";
+	[SerializeField] private float minX;
+	[SerializeField] private float maxX;
+	[SerializeField] private float SPAWN_Y = 10f;
+	[SerializeField] private GameObject ennemyPrefab = null;
 
 	private List<Tuple<float, GameObject>> ennemies;
 	private float totalTimeMillis = 0;
@@ -37,7 +41,7 @@ public class LevelSpawnTrack : MonoBehaviour
 				Tuple<float, GameObject> pair = ennemies[0];
 				if (pair.Item1 <= totalTimeMillis)
 				{
-					Ennemy.InstantiateEnnemy(pair.Item2);
+					InstantiateEnnemy(pair.Item2);
 					ennemies.RemoveAt(0);
 					loop = true;
 				}
@@ -66,5 +70,13 @@ public class LevelSpawnTrack : MonoBehaviour
 		{
 			return new Tuple<float, GameObject>(timeStamp, rightLaneEnnemy);
 		}
+	}
+
+	// Instantiate an ennemy (with random X coord between minX and maxX) given a GameObject Prefab of ennemy
+	public GameObject InstantiateEnnemy(GameObject o)
+	{
+		GameObject instance = Instantiate(ennemyPrefab, new Vector3(UnityEngine.Random.Range(minX, maxX), SPAWN_Y, 0),
+			new Quaternion(0, 0, 0, 0));
+		return instance;
 	}
 }
