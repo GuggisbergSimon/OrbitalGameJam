@@ -11,6 +11,7 @@ public class Ennemy : MonoBehaviour
 		RightOrLeft
 	}
 
+	[SerializeField] private LayerMask notInteractibleWithPlayerLayer = 0;
 	public EnnemyType ennemyType;
 	public bool isLeftLane = true;
 	public float moveSpeed = 10;
@@ -28,7 +29,7 @@ public class Ennemy : MonoBehaviour
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
 	private Rigidbody _myRigidbody;
-
+	private Collider _myCollider;
 	private static float SPEED_MODIFIER = -0.1f;
 	private static float SPAWN_Y = 10f; //TODO adjust for right time with music
 
@@ -37,6 +38,7 @@ public class Ennemy : MonoBehaviour
 		if (other.CompareTag("hitZone"))
 		{
 			isInHitZone = true;
+			gameObject.layer = 0;
 		}
 	}
 
@@ -46,6 +48,7 @@ public class Ennemy : MonoBehaviour
 		{
 			isInHitZone = false;
 			OnHitPlayerTroops();
+			gameObject.layer = notInteractibleWithPlayerLayer;
 		}
 	}
 
@@ -53,8 +56,11 @@ public class Ennemy : MonoBehaviour
 	{
 		if (other.transform.CompareTag("Player") && IsHitable(true))
 		{
-			Debug.Log(other.transform.tag + " " + other.transform.name);
-			OnHitByPlayer(_myRigidbody.velocity);
+			if (!OnHitByPlayer(_myRigidbody.velocity))
+			{
+				_myRigidbody.velocity = Vector3.zero;
+				_myRigidbody.angularVelocity = Vector3.zero;
+			}
 		}
 	}
 
@@ -129,6 +135,7 @@ public class Ennemy : MonoBehaviour
 	void Start()
 	{
 		_myRigidbody = GetComponent<Rigidbody>();
+		_myCollider = GetComponent<Collider>();
 	}
 
 	// Update is called once per frame

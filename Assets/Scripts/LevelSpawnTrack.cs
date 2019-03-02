@@ -28,11 +28,12 @@ public class LevelSpawnTrack : MonoBehaviour
 	{
 		totalTimeMillis += Time.deltaTime;
 		bool loop = true;
-		if (ennemies.Count > 0)
+
+		while (loop)
 		{
-			while (loop)
+			loop = false;
+			if (ennemies.Count > 0)
 			{
-				loop = false;
 				Tuple<float, GameObject> pair = ennemies[0];
 				if (pair.Item1 <= totalTimeMillis)
 				{
