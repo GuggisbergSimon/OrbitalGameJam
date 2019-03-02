@@ -116,6 +116,7 @@ MonoBehaviour:
   fadingToBlackTime: 0.5
   blackPanel: {fileID: 8970522039131946844}
   bloodGauge: {fileID: 8970522038744475138}
+  refreshingGaugeTime: 0.5
 --- !u!1 &8970522038419650014
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

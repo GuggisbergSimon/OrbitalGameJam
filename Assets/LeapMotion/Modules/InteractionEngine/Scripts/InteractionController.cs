@@ -1137,7 +1137,7 @@ namespace Leap.Unity.Interaction {
           //  _softContactColliderBuffer[i] = null;
           //}
           // HACK: assume only using hands on android
-          // TODO: This probably doesn't take into accoutn ignoreContact settings
+          // TODO: This probably doesn't take into account ignoreContact settings
           PhysicsUtility.generateSphereContacts(contactBone.rigidbody.position,
                                                 0.02f * manager.SimulationScale,
                                                 contactBone.rigidbody.velocity,
