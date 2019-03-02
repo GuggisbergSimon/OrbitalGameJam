@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3068475582742214044}
   - component: {fileID: 3068475582742214045}
   - component: {fileID: 3068475582742214046}
+  - component: {fileID: 445885494}
   m_Layer: 8
-  m_Name: interactible leap motion
+  m_Name: Interactible Items Leap Motion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3068475582742214034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.007, z: 0.5}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.5}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -130,7 +131,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e2302a6618bc56343b0ef732236747c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7c04ac0ec2b44db4e98f05deeac3c6f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,3 +142,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &445885494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068475582742214034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf92507985ba3040b03d859bc0b3a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ennemyType: 0
+  isLeftLane: 1
+  moveSpeed: 1
+  coefDeadVelocity: 1
+  coefDeadRotationVelocity: 1
+  spawnPosition: {x: 0, y: 0, z: 0}
+  bloodAmount: 1
+  hitDamages: 1
+  minimalVelocityToDie: 10
+  minX: 0
+  maxX: 0

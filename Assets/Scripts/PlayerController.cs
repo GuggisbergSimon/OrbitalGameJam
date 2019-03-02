@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 	public float CurrentBlood => _currentBlood;
 	public float MaxBlood => maxBlood;
 
-	//todo be called from enemy when hit
+
 	public void AddBlood(float bloodValue)
 	{
 		_currentBlood += bloodValue;
@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour
 			transform.rotation, transform).GetComponent<Minion>());
 	}
 
-	//todo to be called from enemy when reaching player
 	public void RemoveLife()
 	{
 		if (lives <= 0 && _isAlive)
