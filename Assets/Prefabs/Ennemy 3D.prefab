@@ -123,9 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf92507985ba3040b03d859bc0b3a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notInteractibleWithPlayerLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  notInteractibleWithPlayerLayer: 9
   ennemyType: 0
   isLeftLane: 1
   moveSpeed: 1
@@ -135,5 +133,3 @@ MonoBehaviour:
   bloodAmount: 1
   hitDamages: 1
   minimalVelocityToDie: 10
-  minX: 0
-  maxX: 0

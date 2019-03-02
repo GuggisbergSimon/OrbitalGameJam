@@ -374,6 +374,8 @@ MonoBehaviour:
   minX: 0
   maxX: 0
   SPAWN_Y: 10
+  ennemyPrefab: {fileID: 3068475582742214034, guid: d7435ec983823b14d87ecbc23870255c,
+    type: 3}
 --- !u!1001 &1709238225
 PrefabInstance:
   m_ObjectHideFlags: 0

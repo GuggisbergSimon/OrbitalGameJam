@@ -11,7 +11,7 @@ public class Ennemy : MonoBehaviour
 		RightOrLeft
 	}
 
-	[SerializeField] private LayerMask notInteractibleWithPlayerLayer = 0;
+	[SerializeField] private int notInteractibleWithPlayerLayer = 0;
 	public EnnemyType ennemyType;
 	public bool isLeftLane = true;
 	public float moveSpeed = 10;
@@ -27,7 +27,7 @@ public class Ennemy : MonoBehaviour
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
 	private Rigidbody _myRigidbody;
-	private static float SPEED_MODIFIER = -0.1f;//TODO adjust for right time with music
+	private static float SPEED_MODIFIER = -0.1f; //TODO adjust for right time with music
 
 	private void OnTriggerEnter(Collider other)
 	{
