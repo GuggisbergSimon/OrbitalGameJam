@@ -14,6 +14,7 @@ public class Ennemy : MonoBehaviour
 	[SerializeField] private float amplitudeScreenshake = 0.2f;
 	[SerializeField] private float frequencyScreenshake = 0.2f;
 	[SerializeField] private float timeScreenshake = 0.2f;
+	[SerializeField] private GameObject bloodSplatsPrefab = null;
 	public EnnemyType ennemyType;
 	public bool isLeftLane = true;
 	public float moveSpeed = 10;
@@ -85,6 +86,7 @@ public class Ennemy : MonoBehaviour
 		if (isDead)
 		{
 			GameManager.Instance.Player.AddBlood(bloodAmount);
+			Instantiate(bloodSplatsPrefab, transform.position, transform.rotation);
 			GameManager.Instance.CameraManager.Shake(amplitudeScreenshake, frequencyScreenshake,
 				timeScreenshake);
 			// TODO: DEATH animation here
