@@ -82,6 +82,6 @@ public class PlayerController : MonoBehaviour
 
 	public void GameOver()
 	{
-		GameManager.Instance.LoadLevel("GameOver");
+		GameManager.Instance.LoadLevel("GameOverScene");
 	}
 }
