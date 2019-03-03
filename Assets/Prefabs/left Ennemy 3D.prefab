@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 445885494}
   - component: {fileID: 445885493}
   m_Layer: 9
-  m_Name: Ennemy 3D
+  m_Name: left Ennemy 3D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ennemyType: 0
-  isLeftLane: 0
+  isLeftLane: 1
   moveSpeed: 1
   coefDeadVelocity: 1
   coefDeadRotationVelocity: 1
