@@ -118,6 +118,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1794812238}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &445885493
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445885488}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d95ea9b5ae8f276499e2026a84b5b5bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1180026310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,11 +674,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3139930991439720341, guid: 5ec73c3aabbaf8448a03f53852cd8b07,
-        type: 3}
-      propertyPath: m_Name
-      value: sprite
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ec73c3aabbaf8448a03f53852cd8b07, type: 3}
 --- !u!1001 &2015076885
@@ -920,7 +934,32 @@ PrefabInstance:
     - target: {fileID: 2479891874934412157, guid: 320c03ce1bac7b34a8c38d1f052e440d,
         type: 3}
       propertyPath: m_Name
-      value: Minion spawner
+      value: Ennemy spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
+        type: 3}
+      propertyPath: leftLaneEnnemy
+      value: 
+      objectReference: {fileID: 445885488}
+    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
+        type: 3}
+      propertyPath: rightLaneEnnemy
+      value: 
+      objectReference: {fileID: 1188707568}
+    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
+        type: 3}
+      propertyPath: SPAWN_Y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
+        type: 3}
+      propertyPath: maxX
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
+        type: 3}
+      propertyPath: minX
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2479891874934412035, guid: 320c03ce1bac7b34a8c38d1f052e440d,
         type: 3}
@@ -976,31 +1015,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
-        type: 3}
-      propertyPath: leftLaneEnnemy
-      value: 
-      objectReference: {fileID: 445885488}
-    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
-        type: 3}
-      propertyPath: rightLaneEnnemy
-      value: 
-      objectReference: {fileID: 1188707568}
-    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
-        type: 3}
-      propertyPath: SPAWN_Y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
-        type: 3}
-      propertyPath: maxX
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 2479891874934412032, guid: 320c03ce1bac7b34a8c38d1f052e440d,
-        type: 3}
-      propertyPath: minX
-      value: -0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 320c03ce1bac7b34a8c38d1f052e440d, type: 3}

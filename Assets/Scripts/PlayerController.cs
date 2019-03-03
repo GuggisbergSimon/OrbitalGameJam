@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
 		if (lives <= 0 && _isAlive)
 		{
 			_isAlive = false;
+			_myAnimator.SetTrigger("Die");
 			Debug.Log("I'm so dead xd");
 		}
 		else if (lives > 0)
