@@ -79,4 +79,9 @@ public class PlayerController : MonoBehaviour
 			_minionsList.Remove(_minionsList[_minionsList.Count - 1]);
 		}
 	}
+
+	public void GameOver()
+	{
+		GameManager.Instance.LoadLevel("GameOver");
+	}
 }

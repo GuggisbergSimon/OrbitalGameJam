@@ -108,26 +108,12 @@ public class GameManager : MonoBehaviour
 		LoadLevel(nameLevel);
 	}
 
-	private IEnumerator QuittingGame()
+	public void QuitGame()
 	{
-		while (UIManager.IsFadingToBlack)
-		{
-			yield return null;
-		}
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 #else
 		Application.Quit();
 #endif
-	}
-
-	public void QuitGame()
-	{
-		if (!_isQuitting)
-		{
-			_isQuitting = true;
-			_uiManager.FadeToBlack(true);
-			StartCoroutine(QuittingGame());
-		}
 	}
 }
