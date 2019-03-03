@@ -6,6 +6,7 @@ TagManager:
   tags:
   - hitZone
   - PlayerController
+  - arrow
   layers:
   - Default
   - TransparentFX

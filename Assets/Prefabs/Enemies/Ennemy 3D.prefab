@@ -84,8 +84,6 @@ MonoBehaviour:
   ennemyType: 0
   isLeftLane: 0
   moveSpeed: 1
-  coefDeadVelocity: 1
-  coefDeadRotationVelocity: 1
   spawnPosition: {x: 0, y: 0, z: 0}
   bloodAmount: 1
   hitDamages: 1
