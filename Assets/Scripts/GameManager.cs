@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 	public UIManager UIManager => _uiManager;
 	private bool _fadeOutToBlack = false;
 	private bool _isQuitting;
+	private CameraManager _cameraManager;
+	public CameraManager CameraManager => _cameraManager;
 
 	public bool FadeOutToBlack
 	{
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
 		//_player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 		_player = FindObjectOfType<PlayerController>();
 		_uiManager = FindObjectOfType<UIManager>();
+		_cameraManager = FindObjectOfType<CameraManager>();
 	}
 
 	private void Awake()

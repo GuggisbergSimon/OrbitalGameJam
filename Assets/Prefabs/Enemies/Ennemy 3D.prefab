@@ -76,6 +76,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf92507985ba3040b03d859bc0b3a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amplitudeScreenshake: 0.2
+  frequencyScreenshake: 0.2
+  timeScreenshake: 0.2
+  bloodSplatsPrefab: {fileID: 4084949700390429004, guid: 7984ad8ad8d86b0478e9b31f6ed6c5e6,
+    type: 3}
   ennemyType: 0
   isLeftLane: 0
   moveSpeed: 1

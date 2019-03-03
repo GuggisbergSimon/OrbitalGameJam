@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	private bool _isAlive = true;
 	private List<Minion> _minionsList = new List<Minion>();
 	private Animator _myAnimator;
+	private AudioSource _myAudioSource;
 
 	public float CurrentBlood => _currentBlood;
 	public float MaxBlood => maxBlood;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 			_currentBlood -= maxBlood;
 			lives++;
 			_myAnimator.SetTrigger("Spawn");
+			_myAudioSource.Play();
 			AddMinion();
 		}
 
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		_myAnimator = GetComponent<Animator>();
+		_myAudioSource = GetComponent<AudioSource>();
 	}
 
 	private void AddMinion()
