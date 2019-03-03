@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 	public float CurrentBlood => _currentBlood;
 	public float MaxBlood => maxBlood;
 
-
 	public void AddBlood(float bloodValue)
 	{
 		_currentBlood += bloodValue;

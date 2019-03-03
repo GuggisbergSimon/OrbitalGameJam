@@ -224,10 +224,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 185758, guid: 23f2cce114628a448bfeaae171b4c0c0, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 186722, guid: 23f2cce114628a448bfeaae171b4c0c0, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -1478,10 +1474,6 @@ PrefabInstance:
     - target: {fileID: 130690, guid: c8515ebee271c0649b9db1321f3026a4, type: 3}
       propertyPath: m_Layer
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 130690, guid: c8515ebee271c0649b9db1321f3026a4, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 132368, guid: c8515ebee271c0649b9db1321f3026a4, type: 3}
       propertyPath: m_Layer
