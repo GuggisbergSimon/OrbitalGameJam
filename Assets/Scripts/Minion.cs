@@ -9,15 +9,13 @@ public class Minion : MonoBehaviour
 	private void Start()
 	{
 		_myAnimator = GetComponent<Animator>();
-		//_myAnimator.SetTrigger("Spawn");
 	}
 
 	public void Die()
 	{
-		//_myAnimator.SetTrigger("Die");
+		_myAnimator.SetTrigger("Die");
 	}
 
-	//todo call this method from animation after end of Die
 	public void DestroyThis()
 	{
 		Destroy(gameObject);
