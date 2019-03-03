@@ -37,35 +37,37 @@ public class LevelSpawnTrack : MonoBehaviour
 		}
 	}
 
-	private void Update()
-	{
-		float vertical = Input.GetAxis("Vertical");
-		float horizontal = Input.GetAxis("Horizontal");
-		if (vertical != 0 || horizontal != 0)
-		{
-			foreach (Ennemy e in ennemiesAlive)
-			{
-				if (e.IsHitable())
-				{
-					if (vertical > 0)
-					{
-						e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.TopLeft);
-						if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.TopRight);
-					}
-					else if (vertical < 0)
-					{
-					}
-
-					if (horizontal > 0)
-					{
-					}
-					else if (horizontal < 0)
-					{
-					}
-				}
-			}
-		}
-
+    private void Update()
+    {
+        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        if (vertical != 0 || horizontal != 0) { 
+            foreach (Ennemy e in ennemiesAlive)
+            {
+                if (e.IsHitable())
+                {
+                    if (vertical > 0)
+                    {
+                        e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.TopLeft);
+                        if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.TopRight);
+                    }
+                    else if (vertical < 0)
+                    {
+                        if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.BottomRight);
+                        if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.BottomLeft);
+                    }
+                    if (horizontal > 0)
+                    {
+                        if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.Right);
+                    }
+                    else if (horizontal < 0)
+                    {
+                        if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.Left);
+                    }
+                }
+            }
+        }
+        
 
 		totalTimeMillis += Time.deltaTime;
 		bool loop = true;
