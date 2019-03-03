@@ -11,7 +11,6 @@ public class Ennemy : MonoBehaviour
 		RightOrLeft
 	}
 
-	[SerializeField] private LayerMask notInteractibleWithPlayerLayer = 0;
 	public EnnemyType ennemyType;
 	public bool isLeftLane = true;
 	public float moveSpeed = 10;
@@ -20,74 +19,62 @@ public class Ennemy : MonoBehaviour
 	public Vector3 spawnPosition;
 	public float bloodAmount = 1;
 	public float hitDamages = 1;
-	public float minimalVelocityToDie = 10;
-	public float minX;
-	public float maxX;
 
 	private bool isDead = false;
 	private Vector3 deadVelocity;
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
 	private Rigidbody _myRigidbody;
-	private Collider _myCollider;
-	private static float SPEED_MODIFIER = -0.1f;
-	private static float SPAWN_Y = 10f; //TODO adjust for right time with music
+	private static float SPEED_MODIFIER = -0.1f; //TODO adjust for right time with music
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.CompareTag("hitZone"))
 		{
 			isInHitZone = true;
-			gameObject.layer = 0;
 		}
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.CompareTag("hitZone"))
+		if (other.CompareTag("hitZone") && !isDead)
 		{
 			isInHitZone = false;
 			OnHitPlayerTroops();
-			gameObject.layer = notInteractibleWithPlayerLayer;
 		}
 	}
 
-	private void OnCollisionEnter(Collision other)
-	{
-		if (other.transform.CompareTag("Player") && IsHitable(true))
-		{
-			if (!OnHitByPlayer(_myRigidbody.velocity))
-			{
-				_myRigidbody.velocity = Vector3.zero;
-				_myRigidbody.angularVelocity = Vector3.zero;
-			}
-		}
-	}
-
-	public bool OnHitByPlayer(Vector3 direction)
+	public bool OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger directionTrigger)
 	{
 		// Death animation (?)
-		if (direction.magnitude < minimalVelocityToDie) return false;
-
 		switch (ennemyType)
 		{
 			case EnnemyType.Top:
-				isDead = direction.y > 0 && Mathf.Abs(direction.y) > Mathf.Abs(direction.x);
+			{
+				isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight && !isLeftLane ||
+						 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft && isLeftLane;
 				break;
+			}
 			case EnnemyType.Bottom:
-				isDead = direction.y < 0 && Mathf.Abs(direction.y) > Mathf.Abs(direction.x);
+			{
+				isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomRight && !isLeftLane ||
+						 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomLeft && isLeftLane;
 				break;
+			}
+
 			case EnnemyType.RightOrLeft:
+			{
 				if (isLeftLane)
 				{
-					isDead = direction.x < 0 && Mathf.Abs(direction.x) > Mathf.Abs(direction.y);
+					isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Left;
 				}
 				else
 				{
-					isDead = direction.x > 0 && Mathf.Abs(direction.x) > Mathf.Abs(direction.y);
+					isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right;
 				}
 
 				break;
+			}
 			default:
 				return false;
 		}
@@ -97,16 +84,13 @@ public class Ennemy : MonoBehaviour
 			GameManager.Instance.Player.AddBlood(bloodAmount);
 			// TODO: DEATH animation here
 			Destroy(gameObject, 3);
-			float angle = Vector3.Angle(new Vector3(direction.x, 0, 0), new Vector3(0, direction.y, 0));
-			if ((direction.y > 0 && direction.x > 0 && direction.y > direction.x) ||
-				(direction.y > 0 && direction.x < 0 && -direction.x > direction.y) ||
-				(direction.y < 0 && direction.x < 0 && -direction.y > -direction.x) ||
-				(direction.y < 0 && direction.x > 0 && direction.x > -direction.y))
-			{
-				angle = -angle;
-			}
-
-			deadRotationVelocity = new Vector3(0, 0, angle);
+			Vector2 direction =
+				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right ? Vector2.right : Vector2.left) +
+				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
+				 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
+					? Vector2.up
+					: Vector2.down);
+			;
 			deadVelocity = new Vector3(direction.x * coefDeadVelocity, direction.y * coefDeadVelocity, 0);
 		}
 
@@ -115,6 +99,7 @@ public class Ennemy : MonoBehaviour
 
 	void OnHitPlayerTroops()
 	{
+		Debug.Log("Attack");
 		//todo add attack animation
 		GameManager.Instance.Player.RemoveLife();
 		isDead = true;
@@ -126,16 +111,16 @@ public class Ennemy : MonoBehaviour
 	/// </summary>
 	/// <param name="isLeftHand">True if the hit comes from the left lane</param>
 	/// <returns></returns>
-	public bool IsHitable(bool isLeftHand)
+	public bool IsHitable()
 	{
-		return isInHitZone && !isDead && (isLeftHand && isLeftLane);
+		return isInHitZone && !isDead;
 	}
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		_myRigidbody = GetComponent<Rigidbody>();
-		_myCollider = GetComponent<Collider>();
+		transform.eulerAngles = Vector3.zero;
 	}
 
 	// Update is called once per frame
@@ -150,14 +135,5 @@ public class Ennemy : MonoBehaviour
 			transform.Translate(deadVelocity * Time.fixedDeltaTime);
 			transform.Rotate(deadRotationVelocity * Time.fixedDeltaTime);
 		}
-	}
-
-	// Instantiate an ennemy (with random X coord between minX and maxX) given a GameObject Prefab of ennemy
-	public static Ennemy InstantiateEnnemy(GameObject o)
-	{
-		Ennemy current = o.GetComponent<Ennemy>();
-		GameObject instance = Instantiate(o, new Vector3(Random.Range(current.minX, current.maxX), SPAWN_Y, 0),
-			new Quaternion(0, 0, 0, 0));
-		return instance.GetComponent<Ennemy>();
 	}
 }
