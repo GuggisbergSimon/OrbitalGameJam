@@ -11,6 +11,9 @@ public class Ennemy : MonoBehaviour
 		RightOrLeft
 	}
 
+	[SerializeField] private float amplitudeScreenshake = 0.2f;
+	[SerializeField] private float frequencyScreenshake = 0.2f;
+	[SerializeField] private float timeScreenshake = 0.2f;
 	public EnnemyType ennemyType;
 	public bool isLeftLane = true;
 	public float moveSpeed = 10;
@@ -82,6 +85,8 @@ public class Ennemy : MonoBehaviour
 		if (isDead)
 		{
 			GameManager.Instance.Player.AddBlood(bloodAmount);
+			GameManager.Instance.CameraManager.Shake(amplitudeScreenshake, frequencyScreenshake,
+				timeScreenshake);
 			// TODO: DEATH animation here
 			Destroy(gameObject, 3);
 			Vector2 direction =
@@ -128,7 +133,8 @@ public class Ennemy : MonoBehaviour
 		else if (ennemyType == EnnemyType.Bottom)
 		{
 			_myAnimator.SetTrigger("2");
-		}else
+		}
+		else
 		{
 			_myAnimator.SetTrigger("3");
 		}
