@@ -119,6 +119,10 @@ public class Ennemy : MonoBehaviour
 
 	void OnHitPlayerTroops()
 	{
+		for (int i = 1; i < transform.childCount; i++)
+		{
+			transform.GetChild(i).gameObject.SetActive(false);
+		}
 		_myAudioSource.PlayOneShot(whoosesSounds[Random.Range(0, whoosesSounds.Length)]);
 		_myAnimator.SetTrigger("Attack");
 		GameManager.Instance.Player.RemoveLife();
