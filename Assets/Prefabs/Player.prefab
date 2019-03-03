@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7103185606928201839}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: PlayerController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2de46443f02fe34b91693b69552e386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodBath1: {fileID: 5953988422297119359, guid: 0e8d90ef2dd63dd4cbaf053aa9187df3,
+    type: 3}
+  bloodBath2: {fileID: 76311122757099667, guid: 6333d9b001ccf1841a70d04f546f8fa4,
+    type: 3}
+  bloodBath3: {fileID: 4579328689615000481, guid: e162c73e76987514d9baf6b614ba7fb9,
+    type: 3}
+  bloodBath4: {fileID: 3319459486539607382, guid: e2cae3437b1eb8c42a89ee739aec579d,
+    type: 3}
   maxBlood: 10
   lives: 1
   minionPrefab: {fileID: 2525180720446414243, guid: 37f5e40ed06a17640b60f2bb43618b67,
