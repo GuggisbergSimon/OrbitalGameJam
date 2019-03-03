@@ -92,11 +92,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05db3a63dfb210643a6c7ee2aed72e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftLaneEnnemy: {fileID: 0}
-  rightLaneEnnemy: {fileID: 0}
+  leftLaneEnnemies:
+  - {fileID: 4136118128255814171, guid: 65b9f641c5d7abb48985fb2b8755b8c8, type: 3}
+  - {fileID: 4136118128255814171, guid: cd3bbc1caa460c04da981d529bd31aae, type: 3}
+  - {fileID: 4136118128255814171, guid: 12511edff0a9afa4a9873908e564779d, type: 3}
+  rightLaneEnnemies:
+  - {fileID: 6980500221757682687, guid: 6b3d22cf15ee9154484db31cc7d76d67, type: 3}
+  - {fileID: 6980500221757682687, guid: b2844273099df4c4f82322952ddca0b2, type: 3}
+  - {fileID: 6980500221757682687, guid: 9bfa905a1e0a6f64e8e92dea14ac0a69, type: 3}
   levelToLoad: level1
-  minX: -0.01
-  maxX: 0.01
-  SPAWN_Y: 0.2
   ennemyPrefab: {fileID: 3068475582742214034, guid: d7435ec983823b14d87ecbc23870255c,
     type: 3}

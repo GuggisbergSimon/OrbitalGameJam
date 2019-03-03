@@ -18,18 +18,19 @@ public class Ennemy : MonoBehaviour
 	public EnnemyType ennemyType;
 	public bool isLeftLane = true;
 	public float moveSpeed = 10;
-	public float coefDeadVelocity = 1;
-	public float coefDeadRotationVelocity = 1;
 	public Vector3 spawnPosition;
 	public float bloodAmount = 1;
 	public float hitDamages = 1;
 
+	private float coefDeadRotationVelocity = 1000;
+	private float coefDeadVelocity = 1f;
 	private bool isDead = false;
 	private Vector3 deadVelocity;
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
 	private Animator _myAnimator;
 	private static float SPEED_MODIFIER = -0.1f; //TODO adjust for right time with music
+	private static float DIRECTION_MODIFIER = 0.2f;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -89,16 +90,25 @@ public class Ennemy : MonoBehaviour
 			Instantiate(bloodSplatsPrefab, transform.position, transform.rotation);
 			GameManager.Instance.CameraManager.Shake(amplitudeScreenshake, frequencyScreenshake,
 				timeScreenshake);
-			// TODO: DEATH animation here
 			Destroy(gameObject, 3);
 			Vector2 direction =
-				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right ? Vector2.right : Vector2.left) +
+				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right
+					? Vector2.right
+					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right
+						? Vector2.left
+						: new Vector2(0, 0))) +
 				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
 				 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
 					? Vector2.up
-					: Vector2.down);
+					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
+					   directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
+						? Vector2.down
+						: new Vector2(0, 0)));
 			;
-			deadVelocity = new Vector3(direction.x * coefDeadVelocity, direction.y * coefDeadVelocity, 0);
+			deadVelocity =
+				new Vector3((direction.x + Random.Range(-DIRECTION_MODIFIER, DIRECTION_MODIFIER)) * coefDeadVelocity,
+					(direction.y + Random.Range(-DIRECTION_MODIFIER, DIRECTION_MODIFIER)) * coefDeadVelocity, 0);
+			deadRotationVelocity = new Vector3(0, 0, (Random.Range(-1, 1) > 0 ? 1 : -1) * coefDeadRotationVelocity);
 		}
 
 		return !isDead;
@@ -151,8 +161,8 @@ public class Ennemy : MonoBehaviour
 		}
 		else
 		{
-			transform.Translate(deadVelocity * Time.fixedDeltaTime);
-			transform.Rotate(deadRotationVelocity * Time.fixedDeltaTime);
+			transform.Translate(deadVelocity * Time.fixedDeltaTime, Space.World);
+			transform.Rotate(deadRotationVelocity * Time.fixedDeltaTime, Space.Self);
 		}
 	}
 }
