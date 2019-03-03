@@ -86,6 +86,7 @@ public class Ennemy : MonoBehaviour
 
 		if (isDead)
 		{
+            Destroy(transform.GetChild(1).gameObject);
 			GameManager.Instance.Player.AddBlood(bloodAmount);
 			Instantiate(bloodSplatsPrefab, transform.position, transform.rotation);
 			GameManager.Instance.CameraManager.Shake(amplitudeScreenshake, frequencyScreenshake,
@@ -94,14 +95,14 @@ public class Ennemy : MonoBehaviour
 			Vector2 direction =
 				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right
 					? Vector2.right
-					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right
+					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Left
 						? Vector2.left
 						: new Vector2(0, 0))) +
 				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
 				 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
 					? Vector2.up
-					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
-					   directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
+					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomLeft ||
+					   directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomRight
 						? Vector2.down
 						: new Vector2(0, 0)));
 			;
