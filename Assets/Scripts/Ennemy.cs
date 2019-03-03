@@ -37,7 +37,7 @@ public class Ennemy : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-		if (other.CompareTag("hitZone"))
+		if (other.CompareTag("hitZone") && !isDead)
 		{
 			isInHitZone = false;
 			OnHitPlayerTroops();
@@ -99,6 +99,7 @@ public class Ennemy : MonoBehaviour
 
 	void OnHitPlayerTroops()
 	{
+		Debug.Log("Attack");
 		//todo add attack animation
 		GameManager.Instance.Player.RemoveLife();
 		isDead = true;
