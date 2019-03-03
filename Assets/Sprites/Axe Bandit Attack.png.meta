@@ -1,19 +1,14 @@
 fileFormatVersion: 2
-guid: 482be638bf8dfff46a3a57a1adeb18f9
+guid: 9d328fdd8ed987c4cad5356dec8d7669
 TextureImporter:
   fileIDToRecycleName:
-    21300000: The Summoner idle animation_0
-    21300002: The Summoner idle animation_1
-    21300004: The Summoner idle animation_2
-    21300006: The Summoner idle animation_3
-    21300008: The Summoner idle animation_4
-    21300010: The Summoner idle animation_5
-    21300012: The Summoner idle animation_6
-    21300014: The Summoner idle animation_7
-    21300016: The Summoner idle animation_8
-    21300018: The Summoner idle animation_9
-    21300020: The Summoner idle animation_10
-    21300022: The Summoner idle animation_11
+    21300000: Axe Bandit Attack_0
+    21300002: Axe Bandit Attack_1
+    21300004: Axe Bandit Attack_2
+    21300006: Axe Bandit Attack_3
+    21300008: Axe Bandit Attack_4
+    21300010: Axe Bandit Attack_5
+    21300012: Axe Bandit Attack_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -96,7 +91,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: The Summoner idle animation_0
+      name: Axe Bandit Attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,13 +105,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b9f20f689adb24c9a2a37539a9a2d3
+      spriteID: 3df87f9930bf7a5468c8b82f146cbc96
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Summoner idle animation_1
+      name: Axe Bandit Attack_1
       rect:
         serializedVersion: 2
         x: 80
@@ -130,13 +125,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8fe9e60eeb33734cbd3e6280ed8426f
+      spriteID: 28ad62109443d694a874b07271e9955a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Summoner idle animation_2
+      name: Axe Bandit Attack_2
       rect:
         serializedVersion: 2
         x: 160
@@ -150,13 +145,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 121d019368b0f9245b66e5a866155bcc
+      spriteID: 5fb03c4d30f79ca4581894c560d14f60
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Summoner idle animation_3
+      name: Axe Bandit Attack_3
       rect:
         serializedVersion: 2
         x: 240
@@ -170,13 +165,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f0bd844182fdd448a0bda66fd0b8324
+      spriteID: 72da0d6113e11784aadb0a87c9a88d2e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Summoner idle animation_4
+      name: Axe Bandit Attack_4
       rect:
         serializedVersion: 2
         x: 320
@@ -190,13 +185,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78b1cf0ac9f657a40ae126d30bc865a0
+      spriteID: 5d186066ccd5424498590c15f398f2bb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Summoner idle animation_5
+      name: Axe Bandit Attack_5
       rect:
         serializedVersion: 2
         x: 400
@@ -210,13 +205,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 406dcb274cd469c4b9534a7293eb6aae
+      spriteID: d257c33c8723e8844a28ae18022724c6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: The Summoner idle animation_6
+      name: Axe Bandit Attack_6
       rect:
         serializedVersion: 2
         x: 480
@@ -230,107 +225,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fd0b4fd28dd93f4c8c4c57df9096062
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: The Summoner idle animation_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c464e77823bd9b74c943812020105615
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: The Summoner idle animation_8
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da3ae1dc2a5d9c3429a0b8ccf3ca84a2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: The Summoner idle animation_9
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 625481716417bef40b5313bfb09e4fb8
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: The Summoner idle animation_10
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2cbb5e93bb833554e99a26e304becf10
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: The Summoner idle animation_11
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95464ef99323c074f9f92068c032b320
+      spriteID: 67ade05c78c3d34489615fa3a4efe61a
       vertices: []
       indices: 
       edges: []
@@ -338,7 +233,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 94f6426d1dbcef046b756f7f89ee5630
+    spriteID: baf717f762bb97240862c8dbf62dbc53
     vertices: []
     indices: 
     edges: []

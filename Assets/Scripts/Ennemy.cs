@@ -21,6 +21,7 @@ public class Ennemy : MonoBehaviour
 	public Vector3 spawnPosition;
 	public float bloodAmount = 1;
 	public float hitDamages = 1;
+	[SerializeField] private AudioClip[] whoosesSounds = null;
 
 	private float coefDeadRotationVelocity = 1000;
 	private float coefDeadVelocity = 1f;
@@ -29,6 +30,7 @@ public class Ennemy : MonoBehaviour
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
 	private Animator _myAnimator;
+	private AudioSource _myAudioSource;
 	private static float SPEED_MODIFIER = -0.1f; //TODO adjust for right time with music
 	private static float DIRECTION_MODIFIER = 0.2f;
 
@@ -117,8 +119,8 @@ public class Ennemy : MonoBehaviour
 
 	void OnHitPlayerTroops()
 	{
-		Debug.Log("Attack");
-		//todo add attack animation
+		_myAudioSource.PlayOneShot(whoosesSounds[Random.Range(0, whoosesSounds.Length)]);
+		_myAnimator.SetTrigger("Attack");
 		GameManager.Instance.Player.RemoveLife();
 		isDead = true;
 		Destroy(gameObject, 3);
@@ -139,6 +141,7 @@ public class Ennemy : MonoBehaviour
 	{
 		transform.eulerAngles = Vector3.zero;
 		_myAnimator = GetComponent<Animator>();
+		_myAudioSource = GetComponent<AudioSource>();
 		if (ennemyType == EnnemyType.Top)
 		{
 			_myAnimator.SetTrigger("1");
