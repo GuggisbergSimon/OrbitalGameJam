@@ -7,8 +7,8 @@ public class DirectionTrigger : MonoBehaviour
 {
 	[SerializeField] private CardinalDirectionTrigger directionTrigger;
 	[SerializeField] private LevelSpawnTrack spawner = null;
-    [SerializeField] private HandsBehaviour handLeft = null;
-    [SerializeField] private HandsBehaviour handRight = null;
+    //[SerializeField] private HandsBehaviour handLeft = null;
+    //[SerializeField] private HandsBehaviour handRight = null;
 
     private CinemachineVirtualCamera _globalCam;
 	private CinemachineBasicMultiChannelPerlin _noise;
@@ -26,28 +26,29 @@ public class DirectionTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.gameObject.GetComponent<HandsBehaviour>() != null)
         {
+            Debug.Log(other.name);
             Vector3 speed = other.gameObject.GetComponent<HandsBehaviour>().currentSpeed;
-            Debug.Log("Speed " + speed + " type " + directionTrigger);
-            if (speed.magnitude > 10)
+            Debug.Log("Speed " + speed + " type " + directionTrigger+" magn "+speed.magnitude);
+            if (speed.magnitude > 0.5)
             {
                 bool correct = false;
                 switch (directionTrigger)
                 {
                     case DirectionTrigger.CardinalDirectionTrigger.TopRight:
                     case DirectionTrigger.CardinalDirectionTrigger.TopLeft:
-                        correct = speed.z > Mathf.Abs(speed.x);
+                        correct = speed.y > Mathf.Abs(speed.x);
                         break;
                     case DirectionTrigger.CardinalDirectionTrigger.BottomRight:
                     case DirectionTrigger.CardinalDirectionTrigger.BottomLeft:
-                        correct = -speed.z > Mathf.Abs(speed.x);
+                        correct = speed.y < 0 && Mathf.Abs(speed.y) > Mathf.Abs(speed.x);
                         break;
                     case DirectionTrigger.CardinalDirectionTrigger.Right:
-                        correct = speed.x > Mathf.Abs(speed.z);
+                        correct = speed.x > Mathf.Abs(speed.y);
                         break;
                     case DirectionTrigger.CardinalDirectionTrigger.Left:
-                        correct = -speed.x > Mathf.Abs(speed.z);
+                        correct = -speed.x > Mathf.Abs(speed.y);
                         break;
                 }
                 if (correct)

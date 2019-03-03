@@ -16,7 +16,7 @@ public class HandsBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentSpeed = lastPostion - transform.position / Time.deltaTime;
+        currentSpeed = (lastPostion - transform.position) / Time.deltaTime;
         lastPostion = transform.position;
     }
 }

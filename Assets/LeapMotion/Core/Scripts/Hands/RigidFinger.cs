@@ -20,7 +20,7 @@ namespace Leap.Unity{
     void Start() {
       for (int i = 0; i < bones.Length; ++i) {
         if (bones[i] != null) {
-          bones[i].GetComponent<Rigidbody>().maxAngularVelocity = Mathf.Infinity;
+          //bones[i].GetComponent<Rigidbody>().maxAngularVelocity = Mathf.Infinity;
         }
       }
     }
