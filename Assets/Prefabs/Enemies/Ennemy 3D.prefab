@@ -82,7 +82,7 @@ MonoBehaviour:
   coefDeadVelocity: 1
   coefDeadRotationVelocity: 1
   spawnPosition: {x: 0, y: 0, z: 0}
-  bloodAmount: 3
+  bloodAmount: 1
   hitDamages: 1
 --- !u!95 &445885493
 Animator:

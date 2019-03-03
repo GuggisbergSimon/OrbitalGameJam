@@ -24,7 +24,7 @@ public class Ennemy : MonoBehaviour
 	private Vector3 deadVelocity;
 	private Vector3 deadRotationVelocity;
 	private bool isInHitZone = false;
-	private Rigidbody _myRigidbody;
+	private Animator _myAnimator;
 	private static float SPEED_MODIFIER = -0.1f; //TODO adjust for right time with music
 
 	private void OnTriggerEnter(Collider other)
@@ -119,8 +119,19 @@ public class Ennemy : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		_myRigidbody = GetComponent<Rigidbody>();
 		transform.eulerAngles = Vector3.zero;
+		_myAnimator = GetComponent<Animator>();
+		if (ennemyType == EnnemyType.Top)
+		{
+			_myAnimator.SetTrigger("1");
+		}
+		else if (ennemyType == EnnemyType.Bottom)
+		{
+			_myAnimator.SetTrigger("2");
+		}else
+		{
+			_myAnimator.SetTrigger("3");
+		}
 	}
 
 	// Update is called once per frame
