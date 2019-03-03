@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3068475582742214047}
   - component: {fileID: 3068475582742214045}
   - component: {fileID: 445885494}
+  - component: {fileID: 445885493}
   m_Layer: 9
   m_Name: Ennemy 3D
   m_TagString: Untagged
@@ -76,13 +77,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ennemyType: 0
-  isLeftLane: 1
+  isLeftLane: 0
   moveSpeed: 1
   coefDeadVelocity: 1
   coefDeadRotationVelocity: 1
   spawnPosition: {x: 0, y: 0, z: 0}
-  bloodAmount: 1
+  bloodAmount: 3
   hitDamages: 1
+--- !u!95 &445885493
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068475582742214034}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d95ea9b5ae8f276499e2026a84b5b5bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5078744979791747509
 GameObject:
   m_ObjectHideFlags: 0

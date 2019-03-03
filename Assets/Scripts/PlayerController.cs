@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField] private GameObject bloodBath1;
-	[SerializeField] private GameObject bloodBath2;
-	[SerializeField] private GameObject bloodBath3;
-	[SerializeField] private GameObject bloodBath4;
 	[SerializeField] private float maxBlood = 10;
 	[SerializeField] private int lives = 1;
 	[SerializeField] private GameObject minionPrefab = null;
 	[SerializeField] private GameObject startingPointMinions = null;
 	[SerializeField] private float spaceBetweenMinions;
+	[SerializeField] private SpriteRenderer bloodBath = null;
+	[SerializeField] private int[] bloodLevels = null;
+	[SerializeField] private Sprite[] bloodSprites = null;
 	private float _totalBlood = 0;
 	private float _currentBlood;
 	private bool _isAlive = true;
 	private List<Minion> _minionsList = new List<Minion>();
-	private GameObject _parentBloodBath;
 	private Animator _myAnimator;
 
 	public float CurrentBlood => _currentBlood;
@@ -27,7 +25,7 @@ public class PlayerController : MonoBehaviour
 	{
 		_currentBlood += bloodValue;
 		_totalBlood += bloodValue;
-		ChangeBloodBath();
+
 
 		if (_currentBlood > maxBlood)
 		{
@@ -38,46 +36,19 @@ public class PlayerController : MonoBehaviour
 		}
 
 		GameManager.Instance.UIManager.RefreshInterface();
-	}
+		for (int i = 0; i < bloodLevels.Length; i++)
+		{
+			if (_totalBlood < bloodLevels[i])
+			{
+				break;
+			}
 
-	private void ChangeBloodBath()
-	{
-		if (_totalBlood == 1)
-		{
-			bloodBath1 = Instantiate(bloodBath1, _parentBloodBath.transform);
-		}
-		else if (_totalBlood == 2)
-		{
-			Destroy(bloodBath1);
-			bloodBath2 = Instantiate(bloodBath2, _parentBloodBath.transform);
-		}
-		else if (_totalBlood == 3)
-		{
-			Destroy(bloodBath2);
-			bloodBath3 = Instantiate(bloodBath3, _parentBloodBath.transform);
-		}
-		else if (_totalBlood == 4)
-		{
-			Destroy(bloodBath3);
-			bloodBath4 = Instantiate(bloodBath4, _parentBloodBath.transform);
+			bloodBath.sprite = bloodSprites[i];
 		}
 	}
-
-	/* TO visually test what gauge looks like
-	 * private float time = 0;
-	private void Update()
-	{
-		time += Time.deltaTime;
-		if(time > 2)
-		{
-			time = 0;
-			AddBlood(1);
-		}
-	}*/
 
 	private void Start()
 	{
-		_parentBloodBath = GameObject.FindGameObjectWithTag("hitZone");
 		for (int i = 0; i < lives; i++)
 		{
 			AddMinion();
