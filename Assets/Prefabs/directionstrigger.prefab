@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37c2c7a312488b41a2c27c745cc4b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionTrigger: 4
+  directionTrigger: 5
   spawner: {fileID: 0}
 --- !u!54 &8940367829128475529
 Rigidbody:
