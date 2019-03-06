@@ -242,9 +242,9 @@ MonoBehaviour:
   minionPrefab: {fileID: 2525180720446414243, guid: 37f5e40ed06a17640b60f2bb43618b67,
     type: 3}
   startingPointMinions: {fileID: 265488957625891808}
-  spaceBetweenMinions: 0.04
+  spaceBetweenMinions: 0.03
   bloodBath: {fileID: 195235841766744512}
-  bloodLevels: 050000000a0000000f00000014000000
+  bloodLevels: 320000006400000096000000c8000000
   bloodSprites:
   - {fileID: 21300000, guid: 830a05b67aec3444f80600f0c2ed1b42, type: 3}
   - {fileID: 21300000, guid: 33235a8378d2eba498d6e2c0de8b2742, type: 3}

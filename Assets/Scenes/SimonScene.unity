@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1164560792}
   - component: {fileID: 1164560791}
+  - component: {fileID: 1164560793}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -240,6 +241,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1164560793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164560790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fff6a668a499de4e9dafcd94fd48430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 133
+  nameLevel: WinningScene
 --- !u!1001 &1180026310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1309,6 +1324,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761380168876832501, guid: 4eb14fd3c54432c45a9288460418c2ea,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761380168876832501, guid: 4eb14fd3c54432c45a9288460418c2ea,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb14fd3c54432c45a9288460418c2ea, type: 3}
