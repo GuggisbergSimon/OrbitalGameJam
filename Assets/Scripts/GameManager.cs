@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 	private bool _isQuitting;
 	private CameraManager _cameraManager;
 	public CameraManager CameraManager => _cameraManager;
+	private LevelSpawnTrack _spawner;
+	public LevelSpawnTrack spawner => _spawner;
 
 	public bool FadeOutToBlack
 	{
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 		_player = FindObjectOfType<PlayerController>();
 		_uiManager = FindObjectOfType<UIManager>();
 		_cameraManager = FindObjectOfType<CameraManager>();
+		_spawner = FindObjectOfType<LevelSpawnTrack>();
 	}
 
 	private void Awake()

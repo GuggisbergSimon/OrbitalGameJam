@@ -7,7 +7,7 @@ public class LevelSpawnTrack : MonoBehaviour
 {
 	private static float minX = -0.025f;
 	private static float maxX = 0.025f;
-	private static float SPAWN_Y = 0.3f;
+	private static float SPAWN_Y = 0.6f;
 	private static float SPAWN_X_LEFT_LANE = -0.06f;
 	private static float SPAWN_X_RIGHT_LANE = 0.16f;
 	private static float TIME_OFFSET_SPAWN = 3.63f;
@@ -39,38 +39,6 @@ public class LevelSpawnTrack : MonoBehaviour
 
 	private void Update()
 	{
-		float vertical = Input.GetAxis("Vertical");
-		float horizontal = Input.GetAxis("Horizontal");
-		if (vertical != 0 || horizontal != 0)
-		{
-			foreach (Ennemy e in ennemiesAlive)
-			{
-				if (e.IsHitable())
-				{
-					if (vertical > 0)
-					{
-						e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.TopLeft);
-						if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.TopRight);
-					}
-					else if (vertical < 0)
-					{
-						if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.BottomRight);
-						if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.BottomLeft);
-					}
-
-					if (horizontal > 0)
-					{
-						if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.Right);
-					}
-					else if (horizontal < 0)
-					{
-						if (e.IsHitable()) e.OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger.Left);
-					}
-				}
-			}
-		}
-
-
 		totalTimeMillis += Time.deltaTime;
 		bool loop = true;
 

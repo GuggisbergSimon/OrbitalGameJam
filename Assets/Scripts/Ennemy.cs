@@ -53,65 +53,73 @@ public class Ennemy : MonoBehaviour
 
 	public bool OnHitByPlayer(DirectionTrigger.CardinalDirectionTrigger directionTrigger)
 	{
-		// Death animation (?)
-		switch (ennemyType)
+		if (!isDead)
 		{
-			case EnnemyType.Top:
+			// Death animation (?)
+			switch (ennemyType)
 			{
-				isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight && !isLeftLane ||
-						 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft && isLeftLane;
-				break;
-			}
-			case EnnemyType.Bottom:
-			{
-				isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomRight && !isLeftLane ||
-						 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomLeft && isLeftLane;
-				break;
-			}
-
-			case EnnemyType.RightOrLeft:
-			{
-				if (isLeftLane)
+				case EnnemyType.Top:
 				{
-					isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Left;
+					isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight && !isLeftLane ||
+							 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft && isLeftLane;
+					break;
 				}
-				else
+				case EnnemyType.Bottom:
 				{
-					isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right;
+					isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomRight && !isLeftLane ||
+							 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomLeft && isLeftLane;
+					break;
 				}
 
-				break;
-			}
-			default:
-				return false;
-		}
+				case EnnemyType.RightOrLeft:
+				{
+					if (isLeftLane)
+					{
+						isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Left;
+					}
+					else
+					{
+						isDead = directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right;
+					}
 
-		if (isDead)
-		{
-            Destroy(transform.GetChild(1).gameObject);
-			GameManager.Instance.Player.AddBlood(bloodAmount);
-			Instantiate(bloodSplatsPrefab, transform.position, transform.rotation);
-			GameManager.Instance.CameraManager.Shake(amplitudeScreenshake, frequencyScreenshake,
-				timeScreenshake);
-			Destroy(gameObject, 3);
-			Vector2 direction =
-				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right
-					? Vector2.right
-					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Left
-						? Vector2.left
-						: new Vector2(0, 0))) +
-				(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
-				 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
-					? Vector2.up
-					: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomLeft ||
-					   directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomRight
-						? Vector2.down
-						: new Vector2(0, 0)));
-			;
-			deadVelocity =
-				new Vector3((direction.x + Random.Range(-DIRECTION_MODIFIER, DIRECTION_MODIFIER)) * coefDeadVelocity,
-					(direction.y + Random.Range(-DIRECTION_MODIFIER, DIRECTION_MODIFIER)) * coefDeadVelocity, 0);
-			deadRotationVelocity = new Vector3(0, 0, (Random.Range(-1, 1) > 0 ? 1 : -1) * coefDeadRotationVelocity);
+					break;
+				}
+				default:
+					return false;
+			}
+
+			if (isDead)
+			{
+				if (transform.childCount > 1)
+				{
+					Destroy(transform.GetChild(1).gameObject);
+				}
+
+				GameManager.Instance.Player.AddBlood(bloodAmount);
+				Instantiate(bloodSplatsPrefab, transform.position, transform.rotation);
+				GameManager.Instance.CameraManager.Shake(amplitudeScreenshake, frequencyScreenshake,
+					timeScreenshake);
+				Destroy(gameObject, 3);
+				Vector2 direction =
+					(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Right
+						? Vector2.right
+						: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.Left
+							? Vector2.left
+							: new Vector2(0, 0))) +
+					(directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopLeft ||
+					 directionTrigger == DirectionTrigger.CardinalDirectionTrigger.TopRight
+						? Vector2.up
+						: (directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomLeft ||
+						   directionTrigger == DirectionTrigger.CardinalDirectionTrigger.BottomRight
+							? Vector2.down
+							: new Vector2(0, 0)));
+				;
+				deadVelocity =
+					new Vector3(
+						(direction.x + Random.Range(-DIRECTION_MODIFIER, DIRECTION_MODIFIER)) * coefDeadVelocity,
+						(direction.y + Random.Range(-DIRECTION_MODIFIER, DIRECTION_MODIFIER)) * coefDeadVelocity, 0);
+				deadRotationVelocity = new Vector3(0, 0, (Random.Range(-1, 1) > 0 ? 1 : -1) * coefDeadRotationVelocity);
+			}
 		}
 
 		return !isDead;
@@ -123,6 +131,7 @@ public class Ennemy : MonoBehaviour
 		{
 			transform.GetChild(i).gameObject.SetActive(false);
 		}
+
 		_myAudioSource.PlayOneShot(whoosesSounds[Random.Range(0, whoosesSounds.Length)]);
 		_myAnimator.SetTrigger("Attack");
 		GameManager.Instance.Player.RemoveLife();
